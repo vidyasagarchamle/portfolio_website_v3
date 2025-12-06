@@ -39,7 +39,7 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" className="relative py-32 px-6 bg-black" style={{ pointerEvents: 'auto' }}>
+    <section id="contact" className="relative py-20 px-6 bg-black" style={{ pointerEvents: 'auto' }}>
       {/* Background gradient */}
       <div
         className="absolute inset-0 opacity-40 pointer-events-none"

@@ -5,7 +5,7 @@ import { BlurFade } from "@/components/ui/blur-fade";
 
 export function AboutSection() {
   return (
-    <section id="about" className="relative py-32 md:py-40 px-6 bg-black overflow-hidden">
+    <section id="about" className="relative py-20 md:py-24 px-6 bg-black overflow-hidden">
       {/* Subtle gradient background */}
       <div 
         className="absolute inset-0 opacity-40"
@@ -32,7 +32,7 @@ export function AboutSection() {
         </BlurFade>
 
         {/* Main Narrative */}
-        <div className="mt-16 grid md:grid-cols-12 gap-12 md:gap-16">
+        <div className="mt-12 grid md:grid-cols-12 gap-8 md:gap-12">
           
           {/* Left Column - The Story */}
           <div className="md:col-span-7 space-y-6">

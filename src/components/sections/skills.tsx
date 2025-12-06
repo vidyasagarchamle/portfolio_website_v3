@@ -102,8 +102,13 @@ export function SkillsSection() {
 
   const activeCategory = skillCategories[activeTab];
 
+  const handleTabClick = (index: number) => {
+    console.log('Tab clicked:', index, skillCategories[index].title);
+    setActiveTab(index);
+  };
+
   return (
-    <section id="skills" className="relative py-32 bg-black px-6" style={{ pointerEvents: 'auto' }}>
+    <section id="skills" className="relative py-20 bg-black px-6">
       {/* Subtle background gradient */}
       <div
         className="absolute inset-0 opacity-30 pointer-events-none"
@@ -113,9 +118,9 @@ export function SkillsSection() {
         }}
       />
 
-      <div className="relative mx-auto max-w-4xl" style={{ pointerEvents: 'auto' }}>
+      <div className="relative mx-auto max-w-4xl">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <BlurFade delay={0}>
             <span className="text-xs uppercase text-white/30 font-medium tracking-[0.3em]">
               Expertise
@@ -133,8 +138,14 @@ export function SkillsSection() {
           </BlurFade>
         </div>
 
-        {/* Tabs */}
-        <div className="relative z-10 flex items-center justify-center gap-2 p-1.5 rounded-2xl bg-white/[0.03] border border-white/[0.06]" style={{ pointerEvents: 'auto' }}>
+        {/* Tabs - NOT wrapped in BlurFade */}
+        <div 
+          className="relative flex items-center justify-center gap-2 p-1.5 rounded-2xl bg-white/[0.03] border border-white/[0.06]"
+          style={{ 
+            zIndex: 50,
+            position: 'relative'
+          }}
+        >
           {skillCategories.map((category, index) => {
             const Icon = category.icon;
             const isActive = index === activeTab;
@@ -143,25 +154,25 @@ export function SkillsSection() {
               <button
                 key={category.id}
                 type="button"
-                onClick={(e) => {
+                onClick={() => handleTabClick(index)}
+                onMouseDown={(e) => {
+                  e.preventDefault();
                   e.stopPropagation();
-                  console.log('Tab clicked:', index, category.title);
-                  setActiveTab(index);
+                  handleTabClick(index);
                 }}
                 className={cn(
-                  "relative z-10 flex items-center gap-2 px-4 py-2.5 rounded-xl transition-all duration-200 cursor-pointer",
+                  "flex items-center gap-2 px-4 py-2.5 rounded-xl transition-all duration-200 cursor-pointer",
                   isActive 
                     ? "bg-white/10 text-white" 
                     : "text-white/50 hover:text-white/70 hover:bg-white/[0.05]"
                 )}
                 style={{ 
-                  pointerEvents: 'auto',
                   position: 'relative',
-                  zIndex: 11
+                  zIndex: 51
                 }}
               >
-                <Icon className="w-4 h-4 pointer-events-none" />
-                <span className="text-sm font-medium hidden sm:inline pointer-events-none">{category.title}</span>
+                <Icon className="w-4 h-4" />
+                <span className="text-sm font-medium hidden sm:inline">{category.title}</span>
               </button>
             );
           })}

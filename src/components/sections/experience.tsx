@@ -208,7 +208,7 @@ export function ExperienceSection() {
         <div className="grid md:grid-cols-12 md:gap-12 lg:gap-20">
           
           {/* Left Column - Sticky Header */}
-          <div className="md:col-span-5 lg:col-span-4 pt-32 pb-12 md:pb-32">
+          <div className="md:col-span-5 lg:col-span-4 pt-20 pb-12 md:pb-20">
             <div className="md:sticky md:top-32">
               <BlurFade delay={0}>
                 <span className="text-xs uppercase text-white/30 font-medium tracking-[0.3em]">
@@ -247,7 +247,7 @@ export function ExperienceSection() {
           </div>
 
           {/* Right Column - Timeline */}
-          <div className="md:col-span-7 lg:col-span-8 py-12 md:py-32">
+          <div className="md:col-span-7 lg:col-span-8 py-12 md:py-20">
             <div className="relative">
               {experiences.map((experience, index) => (
                 <TimelineEntry

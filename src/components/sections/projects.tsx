@@ -166,7 +166,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 
 export function ProjectsSection() {
   return (
-    <section id="projects" className="relative py-32 bg-black px-6 overflow-hidden">
+    <section id="projects" className="relative py-20 bg-black px-6 overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
@@ -195,7 +195,7 @@ export function ProjectsSection() {
 
       <div className="relative mx-auto max-w-6xl">
         {/* Header */}
-        <div className="mb-16">
+        <div className="mb-12">
           <BlurFade delay={0}>
             <span className="text-xs uppercase text-white/30 font-medium tracking-[0.3em]">
               Side Projects

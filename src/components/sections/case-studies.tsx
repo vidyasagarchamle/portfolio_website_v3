@@ -142,10 +142,10 @@ function CarouselControls() {
 
 export function CaseStudiesSection() {
   return (
-    <section id="case-studies" className="py-32 bg-black px-6">
+    <section id="case-studies" className="py-20 bg-black px-6">
       <div className="mx-auto max-w-6xl">
         {/* Header */}
-        <div className="mb-8 flex flex-col justify-between md:mb-14 md:flex-row md:items-end lg:mb-16">
+        <div className="mb-8 flex flex-col justify-between md:mb-10 md:flex-row md:items-end lg:mb-12">
           <div className="max-w-2xl">
             <BlurFade delay={0}>
               <span className="text-xs uppercase text-white/30 font-medium tracking-[0.3em]">
