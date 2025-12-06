@@ -50,6 +50,7 @@ export function BlurFade({
         ease: "easeOut",
       }}
       className={cn(className)}
+      style={{ pointerEvents: 'inherit' }}
     >
       {children}
     </motion.div>

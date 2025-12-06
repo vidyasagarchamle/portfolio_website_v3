@@ -3,6 +3,7 @@
 import React, { useEffect, useState, useCallback } from "react"
 import { motion } from "framer-motion"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { LucideIcon } from "lucide-react"
 import { cn } from "@/lib/utils"
 
@@ -18,47 +19,69 @@ interface NavBarProps {
 }
 
 export function NavBar({ items, className }: NavBarProps) {
+  const pathname = usePathname()
   const [activeTab, setActiveTab] = useState(items[0].name)
   const [isMobile, setIsMobile] = useState(false)
 
-  // Handle scroll to detect active section
-  const handleScroll = useCallback(() => {
-    const sections = items.map(item => ({
-      name: item.name,
-      element: document.querySelector(item.url)
-    })).filter(s => s.element)
+  // Set active tab based on current pathname
+  useEffect(() => {
+    // Check if we're on a route page (not hash-based)
+    const currentItem = items.find(item => {
+      if (item.url.startsWith('/#')) {
+        return false // Skip hash links
+      }
+      return pathname === item.url || (item.url === '/' && pathname === '/')
+    })
+    
+    if (currentItem) {
+      setActiveTab(currentItem.name)
+      return // Don't set up scroll listener for route pages
+    }
 
-    const scrollPosition = window.scrollY + window.innerHeight / 3
+    // For hash-based navigation on home page, use scroll detection
+    const handleScroll = () => {
+      const sections = items
+        .filter(item => item.url.startsWith('#'))
+        .map(item => ({
+          name: item.name,
+          element: document.querySelector(item.url)
+        }))
+        .filter(s => s.element)
 
-    for (let i = sections.length - 1; i >= 0; i--) {
-      const section = sections[i]
-      if (section.element) {
-        const offsetTop = (section.element as HTMLElement).offsetTop
-        if (scrollPosition >= offsetTop) {
-          setActiveTab(section.name)
-          break
+      const scrollPosition = window.scrollY + window.innerHeight / 3
+
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = sections[i]
+        if (section.element) {
+          const offsetTop = (section.element as HTMLElement).offsetTop
+          if (scrollPosition >= offsetTop) {
+            setActiveTab(section.name)
+            break
+          }
         }
       }
     }
-  }, [items])
 
-  useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768)
     }
 
     handleResize()
     window.addEventListener("resize", handleResize)
-    window.addEventListener("scroll", handleScroll, { passive: true })
     
-    // Initial check
-    handleScroll()
+    // Only add scroll listener on home page
+    if (pathname === '/') {
+      window.addEventListener("scroll", handleScroll, { passive: true })
+      handleScroll()
+    }
 
     return () => {
       window.removeEventListener("resize", handleResize)
-      window.removeEventListener("scroll", handleScroll)
+      if (pathname === '/') {
+        window.removeEventListener("scroll", handleScroll)
+      }
     }
-  }, [handleScroll])
+  }, [items, pathname])
 
   const handleClick = (name: string) => {
     setActiveTab(name)

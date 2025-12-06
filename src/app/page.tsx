@@ -2,12 +2,9 @@
 
 import { GLSLHills } from "@/components/ui/glsl-hills";
 import { NavBar } from "@/components/ui/tubelight-navbar";
-import { Home, User, Briefcase, Mail, Code } from 'lucide-react';
-import { AboutSection } from "@/components/sections/about";
+import { Home, User, Briefcase, Mail, BookOpen } from 'lucide-react';
 import { ImpactStrip } from "@/components/sections/impact-strip";
 import { ExperienceSection } from "@/components/sections/experience";
-import { CaseStudiesSection } from "@/components/sections/case-studies";
-import { ProjectsSection } from "@/components/sections/projects";
 import { SkillsSection } from "@/components/sections/skills";
 import { ContactSection } from "@/components/sections/contact";
 import { FooterSection } from "@/components/sections/footer";
@@ -19,11 +16,10 @@ import { ArrowDown } from "lucide-react";
 
 export default function Portfolio() {
   const navItems = [
-    { name: 'Home', url: '#home', icon: Home },
-    { name: 'About', url: '#about', icon: User },
-    { name: 'Projects', url: '#projects', icon: Briefcase },
-    { name: 'Skills', url: '#skills', icon: Code },
-    { name: 'Contact', url: '#contact', icon: Mail }
+    { name: 'Home', url: '/', icon: Home },
+    { name: 'About', url: '/about', icon: User },
+    { name: 'Projects', url: '/projects', icon: Briefcase },
+    { name: 'Blog', url: '/blog', icon: BookOpen },
   ];
 
   return (
@@ -93,8 +89,8 @@ export default function Portfolio() {
               className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
             >
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button size="lg" className="px-8" onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}>
-                  View My Work
+                <Button size="lg" className="px-8" asChild>
+                  <a href="/projects">View My Work</a>
                 </Button>
               </motion.div>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
@@ -120,7 +116,7 @@ export default function Portfolio() {
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
             className="cursor-pointer"
-            onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() => document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' })}
           >
             <ArrowDown className="w-6 h-6 text-white/40 hover:text-white/70 transition-colors" />
           </motion.div>
@@ -167,17 +163,8 @@ export default function Portfolio() {
       {/* Impact Metrics */}
       <ImpactStrip />
 
-      {/* About Section */}
-      <AboutSection />
-
       {/* Experience Section */}
       <ExperienceSection />
-
-      {/* Case Studies Section */}
-      <CaseStudiesSection />
-
-      {/* Projects Section */}
-      <ProjectsSection />
 
       {/* Skills Section */}
       <SkillsSection />

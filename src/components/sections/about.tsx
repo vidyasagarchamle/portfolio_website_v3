@@ -132,7 +132,7 @@ export function AboutSection() {
                     Want to build something together?
                   </p>
                   <motion.a
-                    href="#contact"
+                    href="/#contact"
                     className="inline-flex items-center text-white/70 hover:text-white transition-colors text-sm font-medium"
                     whileHover={{ x: 4 }}
                   >
