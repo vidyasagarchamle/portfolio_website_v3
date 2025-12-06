@@ -103,17 +103,17 @@ export function SkillsSection() {
   const activeCategory = skillCategories[activeTab];
 
   return (
-    <section id="skills" className="relative py-32 bg-black px-6 overflow-hidden">
+    <section id="skills" className="relative py-32 bg-black px-6" style={{ pointerEvents: 'auto' }}>
       {/* Subtle background gradient */}
       <div
-        className="absolute inset-0 opacity-30"
+        className="absolute inset-0 opacity-30 pointer-events-none"
         style={{
           background:
             "radial-gradient(ellipse 60% 40% at 50% 0%, rgba(139, 92, 246, 0.06), transparent)",
         }}
       />
 
-      <div className="relative mx-auto max-w-4xl">
+      <div className="relative mx-auto max-w-4xl" style={{ pointerEvents: 'auto' }}>
         {/* Header */}
         <div className="text-center mb-16">
           <BlurFade delay={0}>
@@ -134,7 +134,7 @@ export function SkillsSection() {
         </div>
 
         {/* Tabs */}
-        <div className="relative z-10 flex items-center justify-center gap-2 p-1.5 rounded-2xl bg-white/[0.03] border border-white/[0.06]">
+        <div className="relative z-10 flex items-center justify-center gap-2 p-1.5 rounded-2xl bg-white/[0.03] border border-white/[0.06]" style={{ pointerEvents: 'auto' }}>
           {skillCategories.map((category, index) => {
             const Icon = category.icon;
             const isActive = index === activeTab;
@@ -143,16 +143,25 @@ export function SkillsSection() {
               <button
                 key={category.id}
                 type="button"
-                onClick={() => setActiveTab(index)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  console.log('Tab clicked:', index, category.title);
+                  setActiveTab(index);
+                }}
                 className={cn(
-                  "relative z-10 flex items-center gap-2 px-4 py-2.5 rounded-xl transition-all duration-200",
+                  "relative z-10 flex items-center gap-2 px-4 py-2.5 rounded-xl transition-all duration-200 cursor-pointer",
                   isActive 
                     ? "bg-white/10 text-white" 
                     : "text-white/50 hover:text-white/70 hover:bg-white/[0.05]"
                 )}
+                style={{ 
+                  pointerEvents: 'auto',
+                  position: 'relative',
+                  zIndex: 11
+                }}
               >
-                <Icon className="w-4 h-4" />
-                <span className="text-sm font-medium hidden sm:inline">{category.title}</span>
+                <Icon className="w-4 h-4 pointer-events-none" />
+                <span className="text-sm font-medium hidden sm:inline pointer-events-none">{category.title}</span>
               </button>
             );
           })}
