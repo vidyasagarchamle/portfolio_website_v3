@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Mail, Linkedin, Github, Twitter, ArrowUpRight, Copy, Check } from "lucide-react";
 import { BlurFade } from "@/components/ui/blur-fade";
 import { useState } from "react";
@@ -32,22 +31,24 @@ export function ContactSection() {
   const [copied, setCopied] = useState(false);
 
   const copyEmail = () => {
-    navigator.clipboard.writeText(email);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(email);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
   };
 
   return (
-    <section id="contact" className="relative py-32 px-6 bg-black overflow-hidden">
-      {/* Subtle gradient */}
+    <section id="contact" className="relative py-32 px-6 bg-black">
+      {/* Subtle gradient - behind everything */}
       <div
-        className="absolute inset-0 opacity-40 pointer-events-none"
+        className="absolute inset-0 opacity-40 pointer-events-none z-0"
         style={{
           background: "radial-gradient(ellipse 80% 50% at 50% 100%, rgba(120,119,198,0.1), transparent)",
         }}
       />
 
-      <div className="relative mx-auto max-w-3xl text-center z-10">
+      <div className="relative mx-auto max-w-3xl text-center" style={{ zIndex: 10 }}>
         {/* Header */}
         <BlurFade delay={0}>
           <span className="text-xs uppercase text-white/30 font-medium tracking-[0.3em]">
@@ -67,10 +68,16 @@ export function ContactSection() {
           </p>
         </BlurFade>
 
-        {/* Email CTA */}
-        <div className="mt-12 relative z-20">
+        {/* Email CTA - Outside BlurFade wrapper */}
+        <div className="mt-12" style={{ position: 'relative', zIndex: 20 }}>
           <a
             href={`mailto:${email}`}
+            onClick={(e) => e.stopPropagation()}
+            style={{ 
+              position: 'relative',
+              zIndex: 21,
+              pointerEvents: 'auto'
+            }}
             className="group inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-white/[0.03] border border-white/[0.08] hover:bg-white/[0.06] hover:border-white/[0.15] transition-all duration-300 cursor-pointer"
           >
             <Mail className="w-5 h-5 text-white/50 group-hover:text-white/70 transition-colors" />
@@ -83,7 +90,15 @@ export function ContactSection() {
           {/* Copy button */}
           <button
             type="button"
-            onClick={copyEmail}
+            onClick={(e) => {
+              e.stopPropagation();
+              copyEmail();
+            }}
+            style={{ 
+              position: 'relative',
+              zIndex: 21,
+              pointerEvents: 'auto'
+            }}
             className="ml-3 inline-flex items-center gap-2 px-4 py-4 rounded-2xl bg-white/[0.03] border border-white/[0.08] hover:bg-white/[0.06] text-white/50 hover:text-white/70 transition-all duration-300 cursor-pointer"
           >
             {copied ? (
@@ -94,8 +109,8 @@ export function ContactSection() {
           </button>
         </div>
 
-        {/* Social Links */}
-        <div className="mt-16 relative z-20">
+        {/* Social Links - Outside BlurFade wrapper */}
+        <div className="mt-16" style={{ position: 'relative', zIndex: 20 }}>
           <p className="text-sm text-white/30 mb-6">Or find me on</p>
           <div className="flex items-center justify-center gap-4">
             {socialLinks.map((link) => (
@@ -104,6 +119,12 @@ export function ContactSection() {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                style={{ 
+                  position: 'relative',
+                  zIndex: 21,
+                  pointerEvents: 'auto'
+                }}
                 className={`group flex items-center gap-2 px-5 py-3 rounded-xl bg-white/[0.02] border border-white/[0.06] text-white/50 ${link.color} hover:border-white/[0.12] transition-all duration-300 cursor-pointer hover:-translate-y-1`}
               >
                 <link.icon className="w-5 h-5 transition-colors" />
