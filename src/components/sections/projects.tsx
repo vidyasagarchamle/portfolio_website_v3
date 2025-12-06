@@ -40,7 +40,7 @@ const projects: Project[] = [
     name: "Token Trails",
     description:
       "AI-generated podcast exploring Web3 and blockchain with engaging storytelling.",
-    href: "https://www.youtube.com/@tokentrails",
+    href: "https://www.youtube.com/@Token_Trails",
     cta: "Watch",
     tags: ["Web3", "AI", "Media"],
     gradient: "from-amber-500/20 via-amber-500/5 to-transparent",
