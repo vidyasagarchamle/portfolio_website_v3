@@ -31,7 +31,7 @@ export function ContactSection() {
   const [copied, setCopied] = useState(false);
 
   const copyEmail = () => {
-    if (navigator.clipboard) {
+    if (typeof navigator !== 'undefined' && navigator.clipboard) {
       navigator.clipboard.writeText(email);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
@@ -40,15 +40,15 @@ export function ContactSection() {
 
   return (
     <section id="contact" className="relative py-32 px-6 bg-black">
-      {/* Subtle gradient - behind everything */}
+      {/* Background gradient - behind everything */}
       <div
-        className="absolute inset-0 opacity-40 pointer-events-none z-0"
+        className="absolute inset-0 opacity-40 pointer-events-none"
         style={{
           background: "radial-gradient(ellipse 80% 50% at 50% 100%, rgba(120,119,198,0.1), transparent)",
         }}
       />
 
-      <div className="relative mx-auto max-w-3xl text-center" style={{ zIndex: 10 }}>
+      <div className="relative mx-auto max-w-3xl text-center">
         {/* Header */}
         <BlurFade delay={0}>
           <span className="text-xs uppercase text-white/30 font-medium tracking-[0.3em]">
@@ -68,17 +68,21 @@ export function ContactSection() {
           </p>
         </BlurFade>
 
-        {/* Email CTA - Outside BlurFade wrapper */}
-        <div className="mt-12" style={{ position: 'relative', zIndex: 20 }}>
+        {/* Email CTA - Completely separate, no wrappers */}
+        <div className="mt-12 relative" style={{ zIndex: 100 }}>
           <a
             href={`mailto:${email}`}
-            onClick={(e) => e.stopPropagation()}
+            onClick={(e) => {
+              console.log('Email link clicked!');
+              e.preventDefault();
+              window.location.href = `mailto:${email}`;
+            }}
+            className="group inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-white/[0.03] border border-white/[0.08] hover:bg-white/[0.06] hover:border-white/[0.15] transition-all duration-300 cursor-pointer no-underline"
             style={{ 
               position: 'relative',
-              zIndex: 21,
-              pointerEvents: 'auto'
+              zIndex: 101,
+              display: 'inline-flex'
             }}
-            className="group inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-white/[0.03] border border-white/[0.08] hover:bg-white/[0.06] hover:border-white/[0.15] transition-all duration-300 cursor-pointer"
           >
             <Mail className="w-5 h-5 text-white/50 group-hover:text-white/70 transition-colors" />
             <span className="text-lg text-white/80 group-hover:text-white transition-colors">
@@ -87,19 +91,18 @@ export function ContactSection() {
             <ArrowUpRight className="w-4 h-4 text-white/30 group-hover:text-white/60 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
           </a>
 
-          {/* Copy button */}
           <button
             type="button"
             onClick={(e) => {
+              console.log('Copy button clicked!');
               e.stopPropagation();
               copyEmail();
             }}
+            className="ml-3 inline-flex items-center gap-2 px-4 py-4 rounded-2xl bg-white/[0.03] border border-white/[0.08] hover:bg-white/[0.06] text-white/50 hover:text-white/70 transition-all duration-300 cursor-pointer"
             style={{ 
               position: 'relative',
-              zIndex: 21,
-              pointerEvents: 'auto'
+              zIndex: 101
             }}
-            className="ml-3 inline-flex items-center gap-2 px-4 py-4 rounded-2xl bg-white/[0.03] border border-white/[0.08] hover:bg-white/[0.06] text-white/50 hover:text-white/70 transition-all duration-300 cursor-pointer"
           >
             {copied ? (
               <Check className="w-5 h-5 text-emerald-400" />
@@ -109,8 +112,8 @@ export function ContactSection() {
           </button>
         </div>
 
-        {/* Social Links - Outside BlurFade wrapper */}
-        <div className="mt-16" style={{ position: 'relative', zIndex: 20 }}>
+        {/* Social Links - Completely separate */}
+        <div className="mt-16 relative" style={{ zIndex: 100 }}>
           <p className="text-sm text-white/30 mb-6">Or find me on</p>
           <div className="flex items-center justify-center gap-4">
             {socialLinks.map((link) => (
@@ -119,13 +122,14 @@ export function ContactSection() {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={(e) => e.stopPropagation()}
+                onClick={(e) => {
+                  console.log(`${link.name} clicked!`, link.href);
+                }}
+                className={`group flex items-center gap-2 px-5 py-3 rounded-xl bg-white/[0.02] border border-white/[0.06] text-white/50 ${link.color} hover:border-white/[0.12] transition-all duration-300 cursor-pointer hover:-translate-y-1 no-underline`}
                 style={{ 
                   position: 'relative',
-                  zIndex: 21,
-                  pointerEvents: 'auto'
+                  zIndex: 101
                 }}
-                className={`group flex items-center gap-2 px-5 py-3 rounded-xl bg-white/[0.02] border border-white/[0.06] text-white/50 ${link.color} hover:border-white/[0.12] transition-all duration-300 cursor-pointer hover:-translate-y-1`}
               >
                 <link.icon className="w-5 h-5 transition-colors" />
                 <span className="text-sm font-medium transition-colors">{link.name}</span>
