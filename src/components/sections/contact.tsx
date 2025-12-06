@@ -41,13 +41,13 @@ export function ContactSection() {
     <section id="contact" className="relative py-32 px-6 bg-black overflow-hidden">
       {/* Subtle gradient */}
       <div
-        className="absolute inset-0 opacity-40"
+        className="absolute inset-0 opacity-40 pointer-events-none"
         style={{
           background: "radial-gradient(ellipse 80% 50% at 50% 100%, rgba(120,119,198,0.1), transparent)",
         }}
       />
 
-      <div className="relative mx-auto max-w-3xl text-center">
+      <div className="relative mx-auto max-w-3xl text-center z-10">
         {/* Header */}
         <BlurFade delay={0}>
           <span className="text-xs uppercase text-white/30 font-medium tracking-[0.3em]">
@@ -68,62 +68,50 @@ export function ContactSection() {
         </BlurFade>
 
         {/* Email CTA */}
-        <BlurFade delay={0.3}>
-          <div className="mt-12">
-            <motion.a
-              href={`mailto:${email}`}
-              className="group inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-white/[0.03] border border-white/[0.08] hover:bg-white/[0.06] hover:border-white/[0.15] transition-all duration-300"
-              whileHover={{ y: -2 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <Mail className="w-5 h-5 text-white/50 group-hover:text-white/70 transition-colors" />
-              <span className="text-lg text-white/80 group-hover:text-white transition-colors">
-                {email}
-              </span>
-              <ArrowUpRight className="w-4 h-4 text-white/30 group-hover:text-white/60 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
-            </motion.a>
+        <div className="mt-12 relative z-20">
+          <a
+            href={`mailto:${email}`}
+            className="group inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-white/[0.03] border border-white/[0.08] hover:bg-white/[0.06] hover:border-white/[0.15] transition-all duration-300 cursor-pointer"
+          >
+            <Mail className="w-5 h-5 text-white/50 group-hover:text-white/70 transition-colors" />
+            <span className="text-lg text-white/80 group-hover:text-white transition-colors">
+              {email}
+            </span>
+            <ArrowUpRight className="w-4 h-4 text-white/30 group-hover:text-white/60 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+          </a>
 
-            {/* Copy button */}
-            <motion.button
-              onClick={copyEmail}
-              className="ml-3 inline-flex items-center gap-2 px-4 py-4 rounded-2xl bg-white/[0.03] border border-white/[0.08] hover:bg-white/[0.06] text-white/50 hover:text-white/70 transition-all duration-300"
-              whileHover={{ y: -2 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              {copied ? (
-                <Check className="w-5 h-5 text-emerald-400" />
-              ) : (
-                <Copy className="w-5 h-5" />
-              )}
-            </motion.button>
-          </div>
-        </BlurFade>
+          {/* Copy button */}
+          <button
+            type="button"
+            onClick={copyEmail}
+            className="ml-3 inline-flex items-center gap-2 px-4 py-4 rounded-2xl bg-white/[0.03] border border-white/[0.08] hover:bg-white/[0.06] text-white/50 hover:text-white/70 transition-all duration-300 cursor-pointer"
+          >
+            {copied ? (
+              <Check className="w-5 h-5 text-emerald-400" />
+            ) : (
+              <Copy className="w-5 h-5" />
+            )}
+          </button>
+        </div>
 
         {/* Social Links */}
-        <BlurFade delay={0.4}>
-          <div className="mt-16">
-            <p className="text-sm text-white/30 mb-6">Or find me on</p>
-            <div className="flex items-center justify-center gap-4">
-              {socialLinks.map((link, index) => (
-                <motion.a
-                  key={link.name}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`group flex items-center gap-2 px-5 py-3 rounded-xl bg-white/[0.02] border border-white/[0.06] text-white/50 ${link.color} hover:border-white/[0.12] transition-all duration-300`}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 + index * 0.1 }}
-                  whileHover={{ y: -3 }}
-                  whileTap={{ scale: 0.97 }}
-                >
-                  <link.icon className="w-5 h-5 transition-colors" />
-                  <span className="text-sm font-medium transition-colors">{link.name}</span>
-                </motion.a>
-              ))}
-            </div>
+        <div className="mt-16 relative z-20">
+          <p className="text-sm text-white/30 mb-6">Or find me on</p>
+          <div className="flex items-center justify-center gap-4">
+            {socialLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`group flex items-center gap-2 px-5 py-3 rounded-xl bg-white/[0.02] border border-white/[0.06] text-white/50 ${link.color} hover:border-white/[0.12] transition-all duration-300 cursor-pointer hover:-translate-y-1`}
+              >
+                <link.icon className="w-5 h-5 transition-colors" />
+                <span className="text-sm font-medium transition-colors">{link.name}</span>
+              </a>
+            ))}
           </div>
-        </BlurFade>
+        </div>
 
       </div>
     </section>
