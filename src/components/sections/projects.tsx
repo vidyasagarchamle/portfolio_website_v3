@@ -166,7 +166,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 
 export function ProjectsSection() {
   return (
-    <section className="relative py-32 bg-black px-6 overflow-hidden">
+    <section id="projects" className="relative py-32 bg-black px-6 overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
