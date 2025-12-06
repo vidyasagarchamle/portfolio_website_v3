@@ -39,8 +39,8 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" className="relative py-32 px-6 bg-black">
-      {/* Background gradient - behind everything */}
+    <section id="contact" className="relative py-32 px-6 bg-black" style={{ pointerEvents: 'auto' }}>
+      {/* Background gradient */}
       <div
         className="absolute inset-0 opacity-40 pointer-events-none"
         style={{
@@ -48,7 +48,7 @@ export function ContactSection() {
         }}
       />
 
-      <div className="relative mx-auto max-w-3xl text-center">
+      <div className="relative mx-auto max-w-3xl text-center" style={{ pointerEvents: 'auto' }}>
         {/* Header */}
         <BlurFade delay={0}>
           <span className="text-xs uppercase text-white/30 font-medium tracking-[0.3em]">
@@ -68,21 +68,15 @@ export function ContactSection() {
           </p>
         </BlurFade>
 
-        {/* Email CTA - Completely separate, no wrappers */}
-        <div className="mt-12 relative" style={{ zIndex: 100 }}>
+        {/* Email CTA */}
+        <div className="mt-12" style={{ pointerEvents: 'auto', position: 'relative', zIndex: 50 }}>
           <a
             href={`mailto:${email}`}
             onClick={(e) => {
               console.log('Email link clicked!');
-              e.preventDefault();
-              window.location.href = `mailto:${email}`;
             }}
-            className="group inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-white/[0.03] border border-white/[0.08] hover:bg-white/[0.06] hover:border-white/[0.15] transition-all duration-300 cursor-pointer no-underline"
-            style={{ 
-              position: 'relative',
-              zIndex: 101,
-              display: 'inline-flex'
-            }}
+            className="group inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-white/[0.03] border border-white/[0.08] hover:bg-white/[0.06] hover:border-white/[0.15] transition-all duration-300 cursor-pointer"
+            style={{ pointerEvents: 'auto' }}
           >
             <Mail className="w-5 h-5 text-white/50 group-hover:text-white/70 transition-colors" />
             <span className="text-lg text-white/80 group-hover:text-white transition-colors">
@@ -99,10 +93,7 @@ export function ContactSection() {
               copyEmail();
             }}
             className="ml-3 inline-flex items-center gap-2 px-4 py-4 rounded-2xl bg-white/[0.03] border border-white/[0.08] hover:bg-white/[0.06] text-white/50 hover:text-white/70 transition-all duration-300 cursor-pointer"
-            style={{ 
-              position: 'relative',
-              zIndex: 101
-            }}
+            style={{ pointerEvents: 'auto' }}
           >
             {copied ? (
               <Check className="w-5 h-5 text-emerald-400" />
@@ -112,8 +103,8 @@ export function ContactSection() {
           </button>
         </div>
 
-        {/* Social Links - Completely separate */}
-        <div className="mt-16 relative" style={{ zIndex: 100 }}>
+        {/* Social Links */}
+        <div className="mt-16" style={{ pointerEvents: 'auto', position: 'relative', zIndex: 50 }}>
           <p className="text-sm text-white/30 mb-6">Or find me on</p>
           <div className="flex items-center justify-center gap-4">
             {socialLinks.map((link) => (
@@ -125,11 +116,8 @@ export function ContactSection() {
                 onClick={(e) => {
                   console.log(`${link.name} clicked!`, link.href);
                 }}
-                className={`group flex items-center gap-2 px-5 py-3 rounded-xl bg-white/[0.02] border border-white/[0.06] text-white/50 ${link.color} hover:border-white/[0.12] transition-all duration-300 cursor-pointer hover:-translate-y-1 no-underline`}
-                style={{ 
-                  position: 'relative',
-                  zIndex: 101
-                }}
+                className={`group flex items-center gap-2 px-5 py-3 rounded-xl bg-white/[0.02] border border-white/[0.06] text-white/50 ${link.color} hover:border-white/[0.12] transition-all duration-300 cursor-pointer hover:-translate-y-1`}
+                style={{ pointerEvents: 'auto' }}
               >
                 <link.icon className="w-5 h-5 transition-colors" />
                 <span className="text-sm font-medium transition-colors">{link.name}</span>
