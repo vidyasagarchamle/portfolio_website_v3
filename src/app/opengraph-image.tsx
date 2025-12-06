@@ -47,32 +47,6 @@ export default async function Image() {
             padding: '40px',
           }}
         >
-          {/* Name badge */}
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '8px',
-              padding: '8px 20px',
-              borderRadius: '9999px',
-              backgroundColor: 'rgba(255, 255, 255, 0.05)',
-              border: '1px solid rgba(255, 255, 255, 0.1)',
-              marginBottom: '24px',
-            }}
-          >
-            <div
-              style={{
-                width: '8px',
-                height: '8px',
-                borderRadius: '50%',
-                backgroundColor: '#10B981',
-              }}
-            />
-            <span style={{ color: 'rgba(255, 255, 255, 0.7)', fontSize: '18px' }}>
-              Open to Opportunities
-            </span>
-          </div>
-
           {/* Main heading */}
           <h1
             style={{

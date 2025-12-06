@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     siteName: "Vidyasagar Chamle - Product Manager",
     title: "Vidyasagar Chamle | Product Manager Who Ships What Matters",
-    description: "Product Manager with 3+ years of experience building AI products, Web3 applications, and SaaS platforms. Open to new opportunities.",
+    description: "Product Manager with 3+ years of experience building AI products, Web3 applications, and SaaS platforms.",
   },
   twitter: {
     card: "summary_large_image",
