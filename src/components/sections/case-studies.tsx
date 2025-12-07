@@ -179,18 +179,19 @@ export function CaseStudiesSection() {
                   <CarouselItem 
                     key={item.id} 
                     className="pl-4 md:pl-6 basis-[85%] sm:basis-[45%] lg:basis-[32%]"
-                    style={{ position: 'relative', zIndex: 60 + index }}
                   >
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5 }}
-                    style={{ pointerEvents: 'auto', position: 'relative', zIndex: 1 }}
-                  >
-                    <CaseStudyCard item={item} />
-                  </motion.div>
-                </CarouselItem>
+                    <div style={{ position: 'relative', zIndex: 60 + index }}>
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5 }}
+                        style={{ pointerEvents: 'auto', position: 'relative', zIndex: 1 }}
+                      >
+                        <CaseStudyCard item={item} />
+                      </motion.div>
+                    </div>
+                  </CarouselItem>
                 ))}
               </CarouselContent>
             </div>
