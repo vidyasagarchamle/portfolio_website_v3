@@ -173,13 +173,14 @@ export function CaseStudiesSection() {
             <div className="flex justify-end mb-6">
               <CarouselControls />
             </div>
-            <CarouselContent className="-ml-4 md:-ml-6" style={{ position: 'relative', zIndex: 60 }}>
-              {caseStudies.map((item, index) => (
-                <CarouselItem 
-                  key={item.id} 
-                  className="pl-4 md:pl-6 basis-[85%] sm:basis-[45%] lg:basis-[32%]"
-                  style={{ position: 'relative', zIndex: 60 + index }}
-                >
+            <div className="relative" style={{ zIndex: 60 }}>
+              <CarouselContent className="-ml-4 md:-ml-6">
+                {caseStudies.map((item, index) => (
+                  <CarouselItem 
+                    key={item.id} 
+                    className="pl-4 md:pl-6 basis-[85%] sm:basis-[45%] lg:basis-[32%]"
+                    style={{ position: 'relative', zIndex: 60 + index }}
+                  >
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -190,8 +191,9 @@ export function CaseStudiesSection() {
                     <CaseStudyCard item={item} />
                   </motion.div>
                 </CarouselItem>
-              ))}
-            </CarouselContent>
+                ))}
+              </CarouselContent>
+            </div>
           </Carousel>
         </BlurFade>
 
