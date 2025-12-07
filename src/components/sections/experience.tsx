@@ -6,15 +6,15 @@ import { BlurFade } from "@/components/ui/blur-fade";
 
 const experiences = [
   {
-    company: "ZAVIS",
+    company: "Zavis AI",
     role: "Lead Product Manager",
     period: "Current",
-    location: "UAE & GCC Region",
-    description: "Building AI voice agents that automate business calls across support, onboarding, and verifications — tailored for the UAE & GCC region.",
+    location: "Dubai (Remote)",
+    description: "Building a full-stack AI-powered customer engagement platform that automates conversations across WhatsApp, voice calls, email, and Instagram — enabling businesses to scale customer support, sales, and engagement 24/7.",
     highlights: [
-      "Leading product from zero to rollout, defining AI voice agent capabilities and business call automation flows",
-      "Working closely with engineering and ops teams to ship fast, scalable solutions for enterprise clients",
-      "Designing localized experiences for UAE & GCC markets with cultural and business context considerations",
+      "Leading product strategy for AI phone agents and WhatsApp Business automation that handle customer conversations, bookings, and support across multiple channels",
+      "Defining omnichannel experiences that seamlessly switch between chat, voice, and messaging while maintaining brand consistency",
+      "Working closely with engineering and ops teams to ship fast, scalable solutions for enterprise clients across industries",
     ],
     current: true,
   },
@@ -22,7 +22,7 @@ const experiences = [
     company: "Webhash",
     role: "Lead Product Manager",
     period: "Current",
-    location: "Remote",
+    location: "Dubai (Remote)",
     description: "Working on a permissionless network to make websites permanent and censorship-resistant using IPFS.",
     highlights: [
       "Leading product strategy across protocol and ecosystem products for decentralized web infrastructure",
