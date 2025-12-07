@@ -217,7 +217,7 @@ const GLSLHills = ({ width = '100vw', height = '100vh', cameraZ = 125, planeSize
   }, [cameraZ, planeSize, speed]);
 
   return (
-    <div ref={containerRef} style={{ position: 'relative', width, height }}> 
+    <div ref={containerRef} style={{ position: 'relative', width, height, pointerEvents: 'none' }}> 
       <canvas
         ref={canvasRef}
         style={{
@@ -226,7 +226,8 @@ const GLSLHills = ({ width = '100vw', height = '100vh', cameraZ = 125, planeSize
           right: 0,
           bottom: 0,
           left: 0,
-          zIndex: 1
+          zIndex: 1,
+          pointerEvents: 'none'
         }}
       />
     </div>

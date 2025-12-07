@@ -58,16 +58,20 @@ const caseStudies: CaseStudyItem[] = [
 ];
 
 function CaseStudyCard({ item }: { item: CaseStudyItem }) {
-  const handleClick = () => {
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
     window.open(item.pdfUrl, '_blank');
   };
 
   return (
-    <div 
+      <div 
       onClick={handleClick}
+      onMouseDown={(e) => e.stopPropagation()}
       className="group block relative w-full h-[320px] md:h-[400px] cursor-pointer"
+      style={{ pointerEvents: 'auto', position: 'relative', zIndex: 10, isolation: 'isolate' }}
     >
-      <Card className="overflow-hidden h-full w-full rounded-2xl bg-white/[0.02] border-white/[0.06] hover:border-white/[0.12] transition-all duration-500">
+      <Card className="overflow-hidden h-full w-full rounded-2xl bg-white/[0.02] border-white/[0.06] hover:border-white/[0.12] transition-all duration-500" style={{ pointerEvents: 'auto' }}>
         {/* Gradient Background */}
         <div className="relative h-full w-full transition-all duration-500 group-hover:h-1/2">
           <div 
@@ -169,17 +173,19 @@ export function CaseStudiesSection() {
             <div className="flex justify-end mb-6">
               <CarouselControls />
             </div>
-            <CarouselContent className="-ml-4 md:-ml-6">
-              {caseStudies.map((item) => (
+            <CarouselContent className="-ml-4 md:-ml-6" style={{ position: 'relative', zIndex: 60 }}>
+              {caseStudies.map((item, index) => (
                 <CarouselItem 
                   key={item.id} 
                   className="pl-4 md:pl-6 basis-[85%] sm:basis-[45%] lg:basis-[32%]"
+                  style={{ position: 'relative', zIndex: 60 + index }}
                 >
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
+                    style={{ pointerEvents: 'auto', position: 'relative', zIndex: 1 }}
                   >
                     <CaseStudyCard item={item} />
                   </motion.div>

@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { GLSLHills } from "@/components/ui/glsl-hills";
 import { NavBar } from "@/components/ui/tubelight-navbar";
 import { Home, User, Briefcase, Mail, BookOpen } from 'lucide-react';
@@ -28,7 +29,7 @@ export default function Portfolio() {
       <NavBar items={navItems} />
 
       {/* Hero Section */}
-      <section id="home" className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden">
+      <section id="home" className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden" style={{ pointerEvents: 'auto' }}>
         {/* GLSL Background */}
         <div className="absolute inset-0 z-0">
           <GLSLHills />
@@ -82,27 +83,48 @@ export default function Portfolio() {
               I bring ideas to life through data-driven decisions and user-centric design.
             </p>
           </BlurFade>
+        </div>
 
-          {/* CTA Buttons */}
-          <BlurFade delay={0.5}>
-            <motion.div
-              className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
-            >
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button size="lg" className="px-8" asChild>
-                  <a href="/projects">View My Work</a>
-                </Button>
-              </motion.div>
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button variant="outline" size="lg" className="px-8" asChild>
-                  <a href="mailto:vidyasagar.chamle@gmail.com">
-                    <Mail className="w-4 h-4 mr-2" />
-                    Get in Touch
-                  </a>
-                </Button>
-              </motion.div>
-            </motion.div>
-          </BlurFade>
+        {/* CTA Buttons - Outside content div to avoid stacking context issues */}
+        <div 
+          className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 w-full px-6"
+          style={{ 
+            position: 'relative', 
+            zIndex: 100,
+            isolation: 'isolate',
+            pointerEvents: 'auto'
+          }}
+        >
+          <Button 
+            size="lg" 
+            className="px-8 transition-transform hover:scale-105 active:scale-95" 
+            asChild
+            style={{ 
+              pointerEvents: 'auto', 
+              position: 'relative', 
+              zIndex: 101,
+              isolation: 'isolate'
+            }}
+          >
+            <Link href="/projects">View My Work</Link>
+          </Button>
+          <Button 
+            variant="outline" 
+            size="lg" 
+            className="px-8 inline-flex items-center transition-transform hover:scale-105 active:scale-95" 
+            asChild
+            style={{ 
+              pointerEvents: 'auto', 
+              position: 'relative', 
+              zIndex: 101,
+              isolation: 'isolate'
+            }}
+          >
+            <a href="mailto:vidyasagar.chamle@gmail.com">
+              <Mail className="w-4 h-4 mr-2" />
+              Get in Touch
+            </a>
+          </Button>
         </div>
 
         {/* Scroll Indicator */}
@@ -142,10 +164,11 @@ export default function Portfolio() {
         ].map((particle, i) => (
           <motion.div
             key={i}
-            className="absolute w-1 h-1 rounded-full bg-white/20"
+            className="absolute w-1 h-1 rounded-full bg-white/20 pointer-events-none"
             style={{
               left: `${particle.left}%`,
               top: `${particle.top}%`,
+              pointerEvents: 'none',
             }}
             animate={{
               y: [0, -50, 0],

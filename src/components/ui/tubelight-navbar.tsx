@@ -93,8 +93,9 @@ export function NavBar({ items, className }: NavBarProps) {
         "fixed bottom-0 sm:top-0 left-1/2 -translate-x-1/2 z-50 mb-6 sm:pt-6",
         className,
       )}
+      style={{ pointerEvents: 'none' }}
     >
-      <div className="flex items-center gap-3 bg-black/50 border border-white/10 backdrop-blur-lg py-1 px-1 rounded-full shadow-lg">
+      <div className="flex items-center gap-3 bg-black/50 border border-white/10 backdrop-blur-lg py-1 px-1 rounded-full shadow-lg" style={{ pointerEvents: 'auto' }}>
         {items.map((item) => {
           const Icon = item.icon
           const isActive = activeTab === item.name
