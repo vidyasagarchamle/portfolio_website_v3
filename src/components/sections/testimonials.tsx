@@ -14,7 +14,7 @@ const testimonials = [
     avatar: "SC",
   },
   {
-    quote: "One of the most data-driven PMs I've worked with. He doesn't just rely on intuition—every decision is backed by user research and metrics. Our product adoption increased 3x under his leadership.",
+    quote: "One of the most data-driven PMs I've worked with. He doesn't just rely on intuition - every decision is backed by user research and metrics. Our product adoption increased 3x under his leadership.",
     name: "Michael Rodriguez",
     role: "CEO",
     company: "StartupXYZ",

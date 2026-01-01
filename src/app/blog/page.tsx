@@ -162,7 +162,7 @@ export default function BlogPage() {
       <NavBar items={navItems} />
 
       {/* Spacer for navbar */}
-      <div className="pt-24 sm:pt-32" />
+      <div className="pt-12 sm:pt-16" />
 
       {/* Blog Section */}
       <section className="relative py-20 bg-black px-6" style={{ pointerEvents: 'auto' }}>

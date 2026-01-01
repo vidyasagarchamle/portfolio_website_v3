@@ -19,7 +19,7 @@ const projects: Project[] = [
   {
     name: "Finwork CRM",
     description:
-      "AI-powered practice management for CAs — smart tax calculations, compliance tracking, and client management.",
+      "AI-powered practice management for CAs - smart tax calculations, compliance tracking, and client management.",
     href: "https://www.finworkcrm.com/",
     cta: "Visit Site",
     tags: ["AI/ML", "SaaS", "FinTech"],
@@ -30,11 +30,21 @@ const projects: Project[] = [
     name: "Modly AI",
     description:
       "AI-powered content moderation API that detects and filters policy violations automatically.",
-    href: "https://modly.ai",
+    href: "https://www.modly.xyz/",
     cta: "Visit Site",
     tags: ["AI/ML", "API"],
     gradient: "from-violet-500/20 via-violet-500/5 to-transparent",
     glowColor: "rgba(139, 92, 246, 0.15)",
+  },
+  {
+    name: "Hashvault",
+    description:
+      "Store your files permanently on IPFS - fast, reliable, and always accessible. Built on the Webhash Protocol for seamless and secure decentralized storage. Trusted by 100+ users.",
+    href: "https://hashvault.xyz/",
+    cta: "Visit Site",
+    tags: ["Web3", "IPFS", "Storage"],
+    gradient: "from-cyan-500/20 via-cyan-500/5 to-transparent",
+    glowColor: "rgba(6, 182, 212, 0.15)",
   },
   {
     name: "Token Trails",

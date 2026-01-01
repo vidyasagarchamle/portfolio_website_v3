@@ -65,7 +65,7 @@ function CaseStudyCard({ item }: { item: CaseStudyItem }) {
   };
 
   return (
-      <div 
+    <div 
       onClick={handleClick}
       onMouseDown={(e) => e.stopPropagation()}
       className="group block relative w-full h-[320px] md:h-[400px] cursor-pointer"
@@ -160,7 +160,7 @@ export function CaseStudiesSection() {
               <h2 className="mt-4 text-2xl sm:text-3xl lg:text-4xl font-semibold text-white leading-relaxed">
                 Solving Product Challenges{" "}
                 <span className="text-white/40 text-lg sm:text-xl lg:text-2xl font-normal">
-                  — In-depth analyses of product problems and my approach to solving them.
+                  - In-depth analyses of product problems and my approach to solving them.
                 </span>
               </h2>
             </BlurFade>
@@ -174,26 +174,26 @@ export function CaseStudiesSection() {
               <CarouselControls />
             </div>
             <div className="relative" style={{ zIndex: 60 }}>
-              <CarouselContent className="-ml-4 md:-ml-6">
+            <CarouselContent className="-ml-4 md:-ml-6">
                 {caseStudies.map((item, index) => (
-                  <CarouselItem 
-                    key={item.id} 
-                    className="pl-4 md:pl-6 basis-[85%] sm:basis-[45%] lg:basis-[32%]"
-                  >
+                <CarouselItem 
+                  key={item.id} 
+                  className="pl-4 md:pl-6 basis-[85%] sm:basis-[45%] lg:basis-[32%]"
+                >
                     <div style={{ position: 'relative', zIndex: 60 + index }}>
-                      <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5 }}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
                         style={{ pointerEvents: 'auto', position: 'relative', zIndex: 1 }}
-                      >
-                        <CaseStudyCard item={item} />
-                      </motion.div>
+                  >
+                    <CaseStudyCard item={item} />
+                  </motion.div>
                     </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
             </div>
           </Carousel>
         </BlurFade>

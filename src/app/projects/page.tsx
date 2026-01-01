@@ -20,7 +20,7 @@ export default function ProjectsPage() {
       <NavBar items={navItems} />
 
       {/* Spacer for navbar */}
-      <div className="pt-24 sm:pt-32" />
+      <div className="pt-12 sm:pt-16" />
 
       {/* Case Studies Section */}
       <CaseStudiesSection />

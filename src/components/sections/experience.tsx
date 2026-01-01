@@ -10,7 +10,7 @@ const experiences = [
     role: "Lead Product Manager",
     period: "Current",
     location: "Dubai (Remote)",
-    description: "Building a full-stack AI-powered customer engagement platform that automates conversations across WhatsApp, voice calls, email, and Instagram — enabling businesses to scale customer support, sales, and engagement 24/7.",
+    description: "Building a full-stack AI-powered customer engagement platform that automates conversations across WhatsApp, voice calls, email, and Instagram, enabling businesses to scale customer support, sales, and engagement 24/7.",
     highlights: [
       "Leading product strategy for AI phone agents and WhatsApp Business automation that handle customer conversations, bookings, and support across multiple channels",
       "Defining omnichannel experiences that seamlessly switch between chat, voice, and messaging while maintaining brand consistency",
@@ -151,7 +151,7 @@ function TimelineEntry({
           <p className="text-white/70 font-medium">
             {experience.role}
             {experience.project && (
-              <span className="text-white/40 font-normal"> — {experience.project}</span>
+              <span className="text-white/40 font-normal"> - {experience.project}</span>
             )}
           </p>
           <p className="text-sm text-white/40 md:hidden">{experience.location}</p>
@@ -223,7 +223,7 @@ export function ExperienceSection() {
               </BlurFade>
               <BlurFade delay={0.2}>
                 <p className="mt-6 text-white/50 leading-relaxed">
-                  From Web3 gaming to AI voice agents—building products across 
+                  From Web3 gaming to AI voice agents, building products across 
                   emerging tech that solve real problems.
                 </p>
               </BlurFade>
